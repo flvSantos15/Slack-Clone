@@ -7,7 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {}
+      colors: {
+        slack: {
+          300: '#3f0f40',
+          400: '#421f44'
+        }
+      }
     }
   },
   plugins: []
