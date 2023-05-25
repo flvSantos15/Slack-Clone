@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import { UserCircle2, Clock4, Search, HelpCircle } from 'lucide-react'
 
 export function Header() {
