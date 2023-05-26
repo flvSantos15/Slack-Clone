@@ -1,6 +1,7 @@
 'use client'
 
-import { UserCircle2, Clock4, Search, HelpCircle } from 'lucide-react'
+import { HiUserCircle, HiOutlineClock, HiOutlineSearch } from 'react-icons/hi'
+import { MdHelpOutline } from 'react-icons/md'
 
 export function Header() {
   const handleSignIn = () => {
@@ -8,16 +9,16 @@ export function Header() {
   }
 
   return (
-    <div className="flex fixed w-full items-center justify-between py-[10px] px-0 bg-slack-300">
+    <div className="flex fixed w-full items-center justify-between py-[12px] px-0 bg-slack-300">
       <div className="flex-[0.3] flex items-center ml-5">
         <button onClick={handleSignIn} className="pointer hover:opacity-70">
-          <UserCircle2 size={36} fontWeight={200} color="#fff" />
+          <HiUserCircle size={36} fontWeight={200} color="#fff" />
         </button>
-        <Clock4 color="#fff" className="ml-auto mr-[30px]" />
+        <HiOutlineClock size={30} color="#fff" className="ml-auto mr-[30px]" />
       </div>
 
-      <div className="flex-[0.4] rounded-md bg-slack-400 text-center flex py-0 px-[50px] text-gray-100 border border-solid border-gray-100">
-        <Search />
+      <div className="flex-[0.4] rounded-md bg-slack-200 text-center flex items-center py-0 px-[50px] text-gray-100 border border-solid border-gray-100">
+        <HiOutlineSearch size={16} />
         <input
           type="text"
           placeholder="Search PPAFAN"
@@ -26,7 +27,7 @@ export function Header() {
       </div>
 
       <div className="flex-[0.3] flex items-end">
-        <HelpCircle color="#fff" className="ml-auto mr-5" />
+        <MdHelpOutline size={20} color="#fff" className="ml-auto mr-5" />
       </div>
     </div>
   )

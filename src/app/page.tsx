@@ -6,7 +6,7 @@ export default function Home() {
     <div className="h-screen w-full">
       <Header />
 
-      <div className="">
+      <div className="flex h-screen">
         <Sidebar />
       </div>
     </div>
