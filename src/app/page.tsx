@@ -6,8 +6,9 @@ export default function Home() {
     <div className="h-screen w-full">
       <Header />
 
-      <div className="flex h-screen">
+      <div className="flex h-screen w-full">
         <Sidebar />
+        <div className="flex-1 w-full"></div>
       </div>
     </div>
   )

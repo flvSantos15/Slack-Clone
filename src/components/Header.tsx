@@ -10,14 +10,14 @@ export function Header() {
 
   return (
     <div className="flex fixed w-full items-center justify-between py-[12px] px-0 bg-slack-300">
-      <div className="flex-[0.3] flex items-center ml-5">
+      <div className="flex-[0.2] flex items-center ml-5">
         <button onClick={handleSignIn} className="pointer hover:opacity-70">
           <HiUserCircle size={36} fontWeight={200} color="#fff" />
         </button>
         <HiOutlineClock size={30} color="#fff" className="ml-auto mr-[30px]" />
       </div>
 
-      <div className="flex-[0.4] rounded-md bg-slack-200 text-center flex items-center py-0 px-[50px] text-gray-100 border border-solid border-gray-100">
+      <div className="flex-[0.5] rounded-md bg-slack-200 text-center flex items-center py-0 px-[50px] text-gray-100 border border-solid border-gray-100">
         <HiOutlineSearch size={16} />
         <input
           type="text"
