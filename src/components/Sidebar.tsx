@@ -1,5 +1,9 @@
 'use client'
 
+import { useCollection } from 'react-firebase-hooks/firestore'
+import { collection } from 'firebase/firestore'
+import { db } from '@/services/firebase'
+
 import {
   MdCreate,
   MdFiberManualRecord,
@@ -16,6 +20,8 @@ import { ImFilesEmpty } from 'react-icons/im'
 import { SidebarOptions } from './SidebarOptions'
 
 export function Sidebar() {
+  const [channels, loading, error] = useCollection(collection(db, 'chats'))
+
   return (
     <div className="flex-[0.3] border-t border-t-solid border-slack-100 max-w-[280px] mt-[60px] bg-slack-300 text-white">
       <div className="flex w-full justify-between border-b border-b-solid border-b-slack-100 p-[13px]">
@@ -58,6 +64,16 @@ export function Sidebar() {
       <SidebarOptions title="Youtube" />
       <SidebarOptions title="PAPA" />
       <SidebarOptions title="PapaFan Legends" />
+
+      {channels?.docs.map((channel) => {
+        return (
+          <SidebarOptions
+            key={channel?.id}
+            title={channel.data().name}
+            addChannelOption
+          />
+        )
+      })}
     </div>
   )
 }

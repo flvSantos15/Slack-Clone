@@ -1,8 +1,9 @@
 'use client'
 
 import { db } from '@/services/firebase'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, collection, getDoc, getDocs } from 'firebase/firestore'
 import { IconType } from 'react-icons'
+import { v4 as uuidv4 } from 'uuid'
 
 interface SidebarOptionsProps {
   Icon?: IconType
@@ -11,7 +12,6 @@ interface SidebarOptionsProps {
 }
 
 // parei 1:32:18
-// precisando rever a configuração do firebase
 
 export function SidebarOptions({
   Icon,
@@ -23,16 +23,24 @@ export function SidebarOptions({
 
     if (channelName) {
       const channelDoc = {
-        displayName: channelName
+        name: channelName
       }
 
-      const roomDocCollectionReference = doc(db, 'chats')
+      const channelCollection = doc(db, 'chats', uuidv4())
 
-      await setDoc(roomDocCollectionReference, channelDoc)
+      await setDoc(channelCollection, channelDoc)
+
+      alert('Ok!')
     }
   }
 
-  const handleSelectChannel = () => {}
+  const handleSelectChannel = async () => {
+    // const docRef = doc(db, 'Test', '1')
+    const docSnap = await getDocs(collection(db, 'chats'))
+    docSnap.forEach((c) => {
+      console.log(c.data())
+    })
+  }
 
   return (
     <div
