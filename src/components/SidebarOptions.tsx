@@ -1,23 +1,30 @@
 'use client'
 
-import { db } from '@/services/firebase'
-import { doc, setDoc, collection, getDoc, getDocs } from 'firebase/firestore'
-import { IconType } from 'react-icons'
 import { v4 as uuidv4 } from 'uuid'
+import { doc, setDoc } from 'firebase/firestore'
+import { useDispatch } from 'react-redux'
+import { IconType } from 'react-icons'
+
+import { enterChat } from '@/features/AppSlice'
+import { db } from '@/services/firebase'
 
 interface SidebarOptionsProps {
   Icon?: IconType
   title: string
   addChannelOption?: boolean
+  id?: string
 }
 
-// parei 1:32:18
+// parei no 1:54:00
 
 export function SidebarOptions({
   Icon,
   title,
-  addChannelOption
+  addChannelOption,
+  id
 }: SidebarOptionsProps) {
+  const dispatch = useDispatch()
+
   const handleAddChannel = async () => {
     const channelName = prompt('Please enter the channel name')
 
@@ -35,11 +42,13 @@ export function SidebarOptions({
   }
 
   const handleSelectChannel = async () => {
-    // const docRef = doc(db, 'Test', '1')
-    const docSnap = await getDocs(collection(db, 'chats'))
-    docSnap.forEach((c) => {
-      console.log(c.data())
-    })
+    if (id) {
+      dispatch(
+        enterChat({
+          chatId: id
+        })
+      )
+    }
   }
 
   return (
@@ -51,10 +60,10 @@ export function SidebarOptions({
       {Icon ? (
         <h3 className="font-medium">{title}</h3>
       ) : (
-        <div className="">
-          <span className="p-[15px]">#</span>
+        <h3 className="py-[10px] px-0 font-light">
+          <span className="p-2">#</span>
           {title}
-        </div>
+        </h3>
       )}
     </div>
   )

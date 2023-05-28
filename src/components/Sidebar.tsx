@@ -61,16 +61,13 @@ export function Sidebar() {
       <hr className="my-[10px] border border-solid border-slack-100" />
 
       <SidebarOptions Icon={HiPlusSm} addChannelOption title="Add Channel" />
-      <SidebarOptions title="Youtube" />
-      <SidebarOptions title="PAPA" />
-      <SidebarOptions title="PapaFan Legends" />
 
       {channels?.docs.map((channel) => {
         return (
           <SidebarOptions
             key={channel?.id}
+            id={channel.id}
             title={channel.data().name}
-            addChannelOption
           />
         )
       })}
