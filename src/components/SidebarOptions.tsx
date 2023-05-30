@@ -15,8 +15,6 @@ interface SidebarOptionsProps {
   id?: string
 }
 
-// parei no 1:54:00
-
 export function SidebarOptions({
   Icon,
   title,
@@ -34,10 +32,12 @@ export function SidebarOptions({
       }
 
       const channelCollection = doc(db, 'chats', uuidv4())
+      const messageCollection = doc(db, 'chatsMessages', uuidv4())
 
       await setDoc(channelCollection, channelDoc)
+      await setDoc(messageCollection, { messages: [] })
 
-      alert('Ok!')
+      alert('Channel created successifully!!!')
     }
   }
 

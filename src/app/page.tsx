@@ -1,3 +1,4 @@
+import { Chat } from '@/components/Chat'
 import { Header } from '@/components/Header'
 import { Sidebar } from '@/components/Sidebar'
 
@@ -8,7 +9,9 @@ export default function Home() {
 
       <div className="flex h-screen w-full">
         <Sidebar />
-        <div className="flex-1 w-full"></div>
+        <div className="flex-1 h-screen w-full">
+          <Chat />
+        </div>
       </div>
     </div>
   )
